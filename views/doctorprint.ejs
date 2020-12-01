@@ -1,0 +1,217 @@
+<html>
+<head>
+	<title>exporting </title>
+	<script src="https://kit.fontawesome.com/ac0527b785.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<script>
+function Export2Doc(element, filename = ''){
+    var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+    var postHtml = "</body></html>";
+    var html = preHtml+document.getElementById(element).innerHTML+postHtml;
+
+    var blob = new Blob(['\ufeff', html], {
+        type: 'application/msword'
+    });
+    
+    // Specify link url
+    var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+    
+    // Specify file name
+    filename = filename?filename+'.doc':'document.doc';
+    
+    // Create download link element
+    var downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob ){
+        navigator.msSaveOrOpenBlob(blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = url;
+        
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+    
+    document.body.removeChild(downloadLink);
+}
+</script>
+
+<div id="exportContent">
+
+  
+    
+    <div class="jumbotron container form-group" > <h4 class="font-italic"> <i class="fas fa-user-injured"></i>  PATIENT DETAILS</h4> 
+             <button class="btn btn-primary" style="margin-left:85%;" onclick="Export2Doc('exportContent');">Export as .doc</button><br>
+<label>1) Name of the Patient:</label><strong> <%= doctorblog.name %></strong><br>
+        <label>2) Age of the Patient:</label> <strong><%= doctorblog.age %></strong><br>
+        <label>3) Gender of the Patient:</label><strong><%= doctorblog.gender %></strong> <br>
+        <label>4) Created on:</label><strong> <%= doctorblog.created%></strong><br>
+        <label>5) Diagonesd by:</label><strong><%= doctorblog.doctor%></strong><br>
+        <hr>
+    
+    <div class="jumbotron form-group">
+        <h1 class="text-center">Airway Report</h1>
+        <br>
+        <div class="container"><h4>Airway-look</h4>
+        <hr>
+        <strong>Obstruct Foreign Bodies</strong><br>
+         
+         Swelling: <%= doctorblog.ofbSwelling %><br>
+         Deformity: <%= doctorblog.ofbDeformity %><br>
+         Injury: <%= doctorblog.ofbInjury %><br>
+         Others: <%= doctorblog.ofbOthers %><br>
+         <br>
+         <strong>Obstruct Foreign Bodies Descreption</strong><br>
+         Suction: <%= doctorblog.ofbSuction %><br>
+         ChinLift: <%= doctorblog.ofbChinlift %><br>
+         Jaw Thrust: <%= doctorblog.ofbJawthrust %><br>
+         
+         
+          <strong>Obstruct Soft Tissues</strong><br>
+         
+         Secretions: <%= doctorblog.ostSecretions %><br>
+         Vomiting: <%= doctorblog.ostVomiting %><br>
+         Blood Loss: <%= doctorblog.ostBloodloss %><br>
+
+         <br>
+         <strong>Obstruct Foreign Bodies Descreption</strong><br>
+         HeadTilt: <%= doctorblog.ostHeadtilt %><br>
+         ChinLift: <%= doctorblog.ostChinlift %><br>
+         Jaw Thrust: <%= doctorblog.ostJawthrust %><br>
+         <hr>
+         <hr>
+    </div>
+    
+    <div class="container"><h4>Airway-Listen</h4>
+        <hr>
+        Sounds: <%= doctorblog.airSounds %><br>
+         Snoring: <%= doctorblog.airSnoring %><br>
+         Grunting: <%= doctorblog.airGrunting %><br>
+         Strider: <%= doctorblog.airStrider %><br>
+         Gnurfling: <%= doctorblog.airGnurfling %><br>
+          H: <%= doctorblog.airH %><br>
+        Incomprehensive: <%= doctorblog.airIncomprehensive %><br>
+            Suction: <%= doctorblog.airSuction %><br>
+         <br>
+         <strong>Airway-ListenDescreption</strong><br>
+         Head Tilt: <%= doctorblog.airHeadtilt %><br>
+         Chin Lift: <%= doctorblog.airChinlift %><br>
+         Jaw Thrust: <%= doctorblog.airJawthrust%><br>
+         <hr>
+         
+    </div>
+    
+     <div class="container"><h4>Airway-Feel</h4>
+        <hr>
+        <strong>Manual Diagonosis Section</strong><br>
+        <strong>Obstruct Foreign Bodies</strong><br>
+        Swelling: <%= doctorblog.feelSwelling %><br>
+         Deformity: <%= doctorblog.feelDeformity %><br>
+         Injury: <%= doctorblog.feelInjury %><br>
+         Others: <%= doctorblog.feelOthers %><br>
+         <strong>Obstruct Foreign Bodies Description</strong><br>
+                  Suction: <%= doctorblog.feelSuction %><br>
+         Chin Lift: <%= doctorblog.feelChinLift %><br>
+        Further Invention: <%= doctorblog.feelFurthermanual %> 
+         <br>
+         <hr>
+            <strong>Not Manual Diagonosis Section</strong><br>
+            Invention:<%= doctorblog.feelInvention %><br>
+            Further Invention: <%= doctorblog.feelFurthernotmanual %>
+            
+   </div>         
+          
+          </div>  
+            address: <%= doctorblog.address %><br>
+         <hr>
+     <div class="jumbotron container">
+         <h1 class="text-center">Breathing Report</h1>
+         <br>
+         <div class="container">
+             <h3>Breathing Look</h3>
+             <hr>
+             Cynosis: <%= doctorblog.cynosis %><br>
+             Chest cage: <%= doctorblog.ccage %><br>
+             Respiratory: <%=doctorblog.resp %><br>
+             Symettrical Chest Movement: <%=doctorblog.scm %><br>
+        </div>
+        
+        <div>
+            <hr>
+            <h3>Breathing Listen</h3>
+            <hr>
+            <div>
+            <h5 class="font-italic">Normal</h5>
+            Normal_Tracheo-Bronchial: <%= doctorblog.bi11 %><br>
+            Normal_Bronchovesicular: <%= doctorblog.bi12 %><br>
+            
+        </div>
+        
+        <div>
+    
+            <br>
+            <h5 class="font-italic">Abnormal</h5>
+            Abnormal_Rhonchi: <%= doctorblog.bi21 %><br>
+            Abnormal_Wheeze: <%= doctorblog.bi22 %><br>
+            Abnormal_Stridor: <%= doctorblog.bi23 %><br>
+            Abnormal_Crackels: <%= doctorblog.bi24 %><br>
+            Abnormal_Friction rubs: <%= doctorblog.bi25 %><br>
+        <br>
+        </div>
+        
+        <div>
+            <h5 class="font-italic">Bronchial: <%=doctorblog.bi26 %></h5>
+        
+            Tabular: <%=doctorblog.bi261 %><br>
+            Cavernous: <%=doctorblog.bi262 %><br>
+            Amphoric: <%=doctorblog.bi263 %><br>
+            <br>
+        </div>
+        
+        <div>
+            <h5 class="font-italic">Right:</h5>
+            Upper:<%=doctorblog.bi271 %><br>
+            Middle:<%=doctorblog.bi272 %><br>
+            Lower lobes:<%=doctorblog.bi273 %><br>
+            Axilla:<%=doctorblog.bi274 %><br>
+            Interscapula:<%=doctorblog.bi275 %><br>
+            <br>
+        </div>
+        
+        <div>
+            <h5 class="font-italic">Left:</h5>
+            Upper:<%= doctorblog.bi281 %><br>
+            Middle: <%= doctorblog.bi282 %><br>
+            Lower lobes:<%= doctorblog.bi283 %><br>
+            Axilla: <%=doctorblog.bi284 %><br>
+            Interscapula: <%= doctorblog.bi285 %><br>
+            <br>
+        </div>
+        <hr>
+        <h3>Breathing Feel</h3>
+        <hr>
+        <div>
+        Anterior:<%= doctorblog.ant %><br>
+        Posterior:<%= doctorblog.post %><br>
+        Fremitus: <%= doctorblog.frem %><br>
+        Subcutaneous emphysema: <%= doctorblog.sem %><br>
+        Tenderness: <%= doctorblog.tend %><br>
+         
+    </div>
+    
+    </div>
+    </div>
+
+
+</div>
+
+</body>
+</html>
