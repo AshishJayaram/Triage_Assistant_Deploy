@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Edit Page
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<style>
+ 		body{
+ 			background-image:url("https://images.unsplash.com/photo-1528458909336-e7a0adfed0a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=945&q=80");
+ 		}
+ 	</style>
+</head>
+<body onload="callRetrieve()">
+	
+	<nav class="navbar">
+  <a class="navbar-brand" href="#">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMLqroiIgqdVIa8muBrslje6EkZcPFTh54RU3fbqZ1u7wLF9kA&usqp=CAU" width="100" height="100" class="d-inline-block align-top-center" style="margin-left:100%"alt="">
+    </a>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+  <a class="navbar-brand" id="main" class="nav-item active"href="/doctorblogs"><i class="fas fa-chevron-circle-left"></i>  Go Back</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+</nav>
+
+	
+    <h3 class="text-center"><strong>Edit Form</strong></h3>
+    
+	<form action="/doctorblogs/<%=doctorblog._id%>?_method=PUT" method="POST">
+		<br>
+		 <div style="font-family:Segoe UI;" class="jumbotron container form-group" > <h4 class="font-italic"> <i class="fas fa-user-injured"></i>  PATIENT DETAILS</h4> 
+    <div style="font-family:Segoe UI">
+		<label>Name of the Patient:</label><input type="text" name="doc[name]" value="<%=doctorblog.name%>" class="form-control">
+		<br>
+		<label>Age of the Patient:</label><input type="text" name="doc[age]" value="<%=doctorblog.age%>" class="form-control">
+		<br>
+			<label>Gender of the Patient :</label><input type="text" name="doc[gender]" value="<%=doctorblog.gender%>" class="form-control">
+		<br>
+		<label>Created on:</label><input type="date" name="doc[created]" value="<%=doctorblog.created%>" class="form-control">
+		<br>
+		<label>Diagonsed by:</label><input type="text" name="doc[doctor]" value="<%=doctorblog.doctor%>" class="form-control">
+		<br>
+		<label>MEES Score (Change in MEES Score section):</label><input type="text" name="doc[meesscore]" value="<%=doctorblog.MEESScore%>" class="form-control" readonly>
+		<br>
+		</div>
+		
+		<p class="badge badge-dark text-wrap text-left" style="width: 67rem; height:3rem; font-size:2rem" onclick="myFunction()" class="form-control" >Airway</p><th>
+<div id="myAir" style="display:none;">
+  
+
+
+
+ <div class="jumbotron border border-danger rounded container"><h2><strong>Airway Look</strong></h2>
+    <hr>
+    <div class="container"><h3 class="font-italic"><strong>Obstruct Foreign Bodies</strong></h3>
+  
+        
+        <div class="container"><h5 class="font-italic"><strong>Swelling :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ofbSwelling]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ofbSwelling]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ofbSwelling%>)</strong>	</h5>	
+		</div>
+        
+        
+        
+       
+       <div class="container"><h5 class="font-italic"><strong>Deformity :- </strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ofbDeformity]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ofbDeformity]" value="No" >No</label>
+		                  <strong style="color:red;">(previous value:<%=doctorblog.ofbDeformity%>)</strong>	</h5>	
+		</div>
+       
+       
+       
+        
+        <div class="container"><h5 class="font-italic"><strong>Injury :- </strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ofbInjury]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ofbInjury]" value="No" >No</label>
+		                  <strong style="color:red;">(previous value:<%=doctorblog.ofbInjury%>)</strong>	</h5>	
+		</div>
+        
+        
+        <div class="container"><h5 class="font-italic"><strong>Others :- </strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ofbOthers]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ofbOthers]" value="No" >No</label>
+		                  <strong style="color:red;">(previous value:<%=doctorblog.ofbOthers%>)</strong>	</h5>	
+		</div>
+        
+        
+        <br>
+        <h3><strong class="font-italic">Obstruct foreign Bodies description</strong></h3>
+        
+        <div class="container"><h5 class="font-italic"><strong>Suction :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ofbSuction]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ofbSuction]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ofbSuction%>)</strong>	</h5>	
+		</div>
+        
+        
+        
+        <div class="container"><h5 class="font-italic"><strong>Chin Lift :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ofbChinlift]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ofbChinlift]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ofbChinlift%>)</strong>	</h5>	
+		</div>
+        
+        
+        
+        <div class="container"><h5 class="font-italic"><strong>Jaw Thrust :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ofbJawthrust]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ofbJawthrust]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ofbJawthrust%>)</strong>	</h5>	
+		</div>
+        
+    </div>
+    <br>
+    <div class="container"><h3 class="font-italic"><strong>Obstruct Soft Tissues</strong></h3>
+       
+       
+       <div class="container"><h5 class="font-italic"><strong>Secretions :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ostSecretions]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ostSecretions]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ostSecretions%>)</strong>	</h5>	
+		</div>
+       
+       
+        <div class="container"><h5 class="font-italic"><strong>Vomiting :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ostVomiting]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ostVomiting]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ostVomiting%>)</strong>	</h5>	
+		</div>
+        
+        <div class="container"><h5 class="font-italic"><strong>Blood Loss :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ostBloodloss]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ostBloodloss]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ostBloodloss%>)</strong>	</h5>	
+		</div>
+        <br>
+        <h3><strong class="font-italic">Obstruct Soft Tissues Description</strong></h3>
+      
+        <div class="container"><h5 class="font-italic"><strong>Headtilt :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ostHeadtilt]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ostHeadtilt]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ostHeadtilt%>)</strong>	</h5>	
+		</div>
+        
+        <div class="container"><h5 class="font-italic"><strong>Chin Lift :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ostChinlift]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ostChinlift]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ostChinlift%>)</strong>	</h5>	
+		</div>
+        
+        <div class="container"><h5 class="font-italic"><strong>Jaw Thrust :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ostJawthrust]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ostJawthrust]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ostJawthrust%>)</strong>	</h5>	
+		</div>
+        
+    
+    </div>
+</div>
+<hr>
+<div class="jumbotron border border-primary container"><h2><strong>Airway Listen</strong></h2>
+<hr>
+    
+        <div class="container"><h5 class="font-italic"><strong>Air Sounds :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airSounds]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airSounds]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airSounds%>)</strong>	</h5>	
+		</div>
+       
+        
+        
+        <div class="container"><h5 class="font-italic"><strong>Air Grunting :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airGrunting]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airGrunting]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airGrunting%>)</strong>	</h5>	
+		</div>
+       
+        
+        <div class="container"><h5 class="font-italic"><strong>Air Snoring :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airSnoring]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airSnoring]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airSnoring%>)</strong>	</h5>	
+		</div>
+       
+        <div class="container"><h5 class="font-italic"><strong>Air Strider :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airStrider]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airStrider]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airStrider%>)</strong>	</h5>	
+		</div>
+       
+        
+        <div class="container"><h5 class="font-italic"><strong>Air Gnurfling :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airGnurfling]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airGnurfling]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airGnurfling%>)</strong>	</h5>	
+		</div>
+       
+        
+        <div class="container"><h5 class="font-italic"><strong>Air H :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airH]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airH]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airH%>)</strong>	</h5>	
+		</div>
+       
+        
+        <div class="container"><h5 class="font-italic"><strong>Air Incomprehensive :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airIncomprehensive]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airIncomprehensive]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airIncomprehensive%>)</strong>	</h5>	
+		</div>
+       
+        
+        
+        <div class="container"><h5 class="font-italic"><strong>Air Suction :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airSuction]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airSuction]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airSuction%>)</strong>	</h5>	
+		</div>
+       
+        
+        <br>
+        <h3><strong class="font-italic">Airway-listen symptoms description</strong></h3>
+        <div class="container"><h5 class="font-italic"><strong>HeadTilt :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airHeadtilt]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airHeadtilt]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airHeadtilt%>)</strong>	</h5>	
+		</div>
+       
+        
+        <div class="container"><h5 class="font-italic"><strong>ChinLift :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airChinlift]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airChinlift]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airChinlift%>)</strong>	</h5>	
+		</div>
+       
+        
+        <div class="container"><h5 class="font-italic"><strong>Jaw Thrust :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[airJawthrust]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[airJawthrust]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.airJawthrust%>)</strong>	</h5>	
+		</div>
+       
+        
+          
+    
+    </div>
+
+<div class="jumbotron border border-danger container"><h2><strong>Airway Feel</strong></h2>
+    <hr>
+    <h2 class="font-Italic"><strong>If diagonosing Manually</strong></h2>
+    <div class="container"><h3 class="font-italic"><strong>Obstruct Foreign Bodies</strong></h3>
+        <div class="container"><h5 class="font-italic"><strong>Feel Swelling :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[feelSwelling]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[feelSwelling]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.feelSwelling%>)</strong>	</h5>	
+		</div>
+        
+        
+        <div class="container"><h5 class="font-italic"><strong>Feel Deformity :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[feelDeformity]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[feelDeformity]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.feelDeformity%>)</strong>	</h5>	
+		</div>
+        <div class="container"><h5 class="font-italic"><strong>Feel injury :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[feelInjury]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[feelInjury]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.feelInjury%>)</strong>	</h5>	
+		</div>
+        
+        <div class="container"><h5 class="font-italic"><strong>Feel Others :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[feelOthers]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[feelOthers]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.feelOthers%>)</strong>	</h5>	
+		</div>
+        <br>
+       
+        <h3><strong class="font-italic">Obstruct foreign Bodies description</strong></h3>
+        
+        <div class="container"><h5 class="font-italic"><strong>Feel Suction :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[feelSuction]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[feelSuction]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.feelSuction%>)</strong>	</h5>	
+		</div>
+        
+   
+<div class="container"><h5 class="font-italic"><strong>Feel Chinlift :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[feelChinLift]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[feelChinLift]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.feelChinLift%>)</strong>	</h5>	
+		</div>   
+    <br>
+    <p class="font-italic"><strong>Further Intervention:</strong><br>
+    <textarea name="doc[feelFurthermanual]" row="5" cols"100" ><%=doctorblog.feelFurthermanual%></textarea>
+    </p>
+    </div>
+    <br>
+    <hr>
+    <h2 class="font-Italic"><strong>If not diagonosing manually</strong></h2>
+    <label><strong>Intervention:</strong></label><br> <textarea name="doc[feelInvention]" row="4" cols="50"><%=doctorblog.feelInvention%></textarea>
+    <hr>
+    <p class="font-italic"><strong>Further Intervention:</strong><br>
+    <textarea name="doc[feelFurthernotmanual]" row="5" cols"100"><%=doctorblog.feelFurthernotmanual%></textarea>
+    </p>
+    
+    <hr>
+
+
+
+
+</div>
+
+
+</div>
+
+</p>
+
+
+<p class="badge badge-danger text-wrap text-left" style="width: 67rem; height:3rem; font-size:2rem;" onclick="mybFunction()">Breathing
+<div id="myBir" style="display:none;">
+ 
+
+	
+		<div class="container " > <h1 class="text-center "> </h1>
+		<div class="jumbotron border border-danger rounded"><h2><strong>Breathing Look</strong></h2>
+		<hr>
+		
+		
+		<div class="container"><h5 class="font-italic"><strong>Cynosis :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[cynosis]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[cynosis]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.cynosis%>)</strong>	</h5>	
+		</div>
+		
+	
+	<div class="container"><h5 class="font-italic"><strong>Chest Cage :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ccage]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ccage]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ccage%>)</strong>	</h5>	
+		</div>
+	
+	
+	
+	<div class="container"><h5 class="font-italic"><strong>Respiratory :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[resp]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[resp]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.resp%>)</strong>	</h5>	
+		</div>
+	
+	
+	
+	<div class="container"><h5 class="font-italic"><strong>Symmetrical Chest Movement :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[scm]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[scm]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.scm%>)</strong>	</h5>	
+		</div>
+		
+</div>
+<hr>
+<div class="jumbotron border border-primary"><h2><strong>Breathing Listen</strong></h2>
+<hr>
+		
+			<div id="listend" class="btn4">
+			
+				<div class="btn2">
+					<p class="badge badge-success text-wrap text-center" style="width: 15rem; height:4rem;  font-size:2rem; text-align:center" onclick="normal()">Normal</p>____                  
+					<p class="badge badge-success text-wrap text-center" style="width: 15rem; height:4rem;  font-size:2rem; text-align:center" onclick="abnormal()">Abnormal</p>
+				</div>	
+				<br /><br />
+				<div id="normald" style="display:none;">
+					<div class="btn4">
+						<h2 id="bi1">Normal</h2>
+						
+						<div class="container"><h5 class="font-italic"><strong>Tracheo-Bronchial :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi11]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi11]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi11%>)</strong>	</h5>	
+		</div>
+       
+        
+						
+								
+					
+						
+						<div class="container"><h5 class="font-italic"><strong>Bronchovesicular :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi12]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi12]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi12%>)</strong>	</h5>	
+		</div>
+       
+        
+						<h4>	
+					</div>
+ 				<br>			
+				</div>
+				
+				<div id="abnormald" style="display:none;">
+				<div class="btn4">
+					
+										<div class="container"><h5 class="font-italic"><strong>Rhonchi :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi21]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi21]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi21%>)</strong>	</h5>	
+		</div>
+       
+					
+					
+										<div class="container"><h5 class="font-italic"><strong>Wheeze :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi22]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi22]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi22%>)</strong>	</h5>	
+		</div>
+       
+					
+					
+					<div class="container"><h5 class="font-italic"><strong>Stridor: :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi23]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi23]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi23%>)</strong>	</h5>	
+					</div>
+       
+					
+					
+					
+										<div class="container"><h5 class="font-italic"><strong>Crackels :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi24]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi24]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi24%>)</strong>	</h5>	
+		</div>
+       
+					
+					
+				
+				
+									<div class="container"><h5 class="font-italic"><strong>Friction rubs :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi25]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi25]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi25%>)</strong>	</h5>	
+		</div>
+       
+				
+					
+					<h3>Bronchial:<input type="checkbox" id="bi26" name="bi26" onclick="broncf()" id="bi26">   </h3>
+						
+					
+					
+					
+						<div id="broncd" style="display: none;">
+							
+							
+												<div class="container"><h5 class="font-italic"><strong>Tubular :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi261]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi261]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi261%>)</strong>	</h5>	
+		</div>
+       
+							
+						
+							
+												<div class="container"><h5 class="font-italic"><strong>Cavernous :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi262]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi262]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi262%>)</strong>	</h5>	
+		</div>
+       
+						
+										<div class="container"><h5 class="font-italic"><strong>	Amphoric: :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi263]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi263]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi263%>)</strong>	</h5>	
+		</div>
+       
+					
+					
+						</div>
+						
+					
+					<h3>Right:</h3>
+						
+						<div id="rightd">
+							
+							<div class="container"><h5 class="font-italic"><strong>Upper :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi271]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi271]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi271%>)</strong>	</h5>	
+					</div>
+							
+							<div class="container"><h5 class="font-italic"><strong>Middle :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi272]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi272]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi272%>)</strong>	</h5>	
+					</div>
+					
+							<div class="container"><h5 class="font-italic"><strong>Lower lobes :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi273]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi273]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi273%>)</strong>	</h5>	
+					</div>
+					
+							<div class="container"><h5 class="font-italic"><strong>Axilla :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi274]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi274]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi274%>)</strong>	</h5>	
+					</div>
+							  
+						<div class="container"><h5 class="font-italic"><strong>Interscapula :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi275]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi275]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi275%>)</strong>	</h5>	
+					</div>
+						</div>
+						
+					
+					<h3 class="font-italic">Left:</h3><br>
+						
+						<div id="leftd">
+			
+							<div class="container"><h5 class="font-italic"><strong>Upper :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi281]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi281]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi281%>)</strong>	</h5>	
+					</div>
+							
+							<div class="container"><h5 class="font-italic"><strong>Middle :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi282]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi282]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi282%>)</strong>	</h5>	
+					</div>
+						
+							<div class="container"><h5 class="font-italic"><strong>Lower lobes :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi283]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi283]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi283%>)</strong>	</h5>	
+					</div>
+							  
+							<div class="container"><h5 class="font-italic"><strong>Axilla :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi284]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi284]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi284%>)</strong>	</h5>	
+					</div>
+	
+					<div class="container"><h5 class="font-italic"><strong>Interscapula :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[bi285]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[bi285]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.bi285%>)</strong>	</h5>	
+					</div>
+						</div>
+					
+				</div>
+ 							 
+				</div>
+			
+		</div>
+			<br>		
+		
+		</div>
+<hr>
+		<div class="jumbotron border border-danger rounded"><h2><strong>Breathing Feel</strong></h2>
+		<hr>
+		<h3><strong>Thoriac Expansion</strong></h3>
+		
+		<div class="container"><h5 class="font-italic"><strong>Anterior :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[ant]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[ant]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ant%>)</strong>	</h5>	
+		</div>
+	
+		
+		
+		
+		<div class="container"><h5 class="font-italic"><strong>Posterior :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[post]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[post]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.post%>)</strong>	</h5>	
+		</div>
+	
+		
+		
+		<div class="container"><h5 class="font-italic"><strong>Fremitus :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[frem]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[frem]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.frem%>)</strong>	</h5>	
+		</div>
+	
+
+		
+		<div class="container"><h5 class="font-italic"><strong>Subcutaneous Emphysema :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[sem]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[sem]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.sem%>)</strong>	</h5>	
+		</div>
+	
+		 
+		
+		<div class="container"><h5 class="font-italic"><strong>Tenderness :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[tend]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[tend]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.tend%>)</strong>	</h5>	
+		</div>
+	
+	</div>	
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+</p>
+
+
+<p class="badge badge-dark text-wrap text-left" style="width: 67rem; height:3rem; font-size:2rem " onclick="mycFunction()">Circulation<p></tr></td>
+<div id="myCir" style="display:none;">
+
+<div class="container " > <h1 class="text-center "></h1>
+		<div class="jumbotron border border-danger rounded"><h2><strong>Circulation Look</strong></h2>
+		<hr>
+		<div class="btn4">
+			<h3>General Appearence Patient:</h3> <h5 class="font-italic">
+				<strong style="color:red;">(Previously was <%=doctorblog.gap%>)</strong>
+				<br>
+ 				<input type="radio" id="cl11" name="doc[gap]" value="pink">
+  				<label >Pink</label><br>
+  				<input type="radio" id="cl12" name="doc[gap]" value="pale">
+				<label >Pale</label><br>
+				<input type="radio" id="cl13" name="doc[gap]" value="blue">
+  				<label >Blue peripheries</label><br>
+  				<input type="radio" id="cl14" name="doc[gap]" value="motelled">
+				<label >Motelled</label><br></h5>
+
+			<h3>Assess The Capillary Refill Time:</h3><h5 class="font-italic">
+				<strong style="color:red;">(Previously was <%=doctorblog.atcrt%>)</strong>
+				<br>
+ 				<input type="radio" id="cl21" name="doc[atcrt]" value="less than 2 Seconds">
+  				<label ><2 sec</label><br>
+  				<input type="radio" id="cl22" name="doc[atcrt]" value="More than 2 Seconds">
+				<label >>2 sec</label><br></h5>
+			<h3>JVP:</h3> <h5 class="font-italic">
+				<strong style="color:red;">(Previously was <%=doctorblog.jvp%>)</strong>
+				<br>
+ 				<input type="radio" id="cl31" name="doc[jvp]" value="Normal">
+  				<label >Normal</label><br>
+  				<input type="radio" id="cl32" name="doc[jvp]" value="Raised">
+				<label >Raised</label><br></h5>
+			<h3>Oedema:</h3><h5 class="font-italic">
+				<strong style="color:red;">(Previously was <%=doctorblog.od%>)</strong>
+				<br>
+ 				<input type="radio" id="cl41" name="doc[od]" value="General">
+  				<label >General</label><br>
+  				<input type="radio" id="cl42" name="doc[od]" value="Pedal">
+				<label >Pedal</label><br></h5>
+		</div>
+		
+		
+</div>
+
+
+<div class="jumbotron border border-primary"><h2><strong>Circulation Listen</strong></h2>
+<hr>
+		
+			<div class="btn4">
+				<h3>Heart Sounds: <input type="checkbox" id="ci1" name="doc[ci1]" onclick="hsf()" value="Yes" id="ci1"></h3>
+				
+				<div id="hsop" style="display: none;">
+					
+					<div class="container"><h5 class="font-italic"><strong>Normal :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cinorm]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cinorm]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.cinorm%>)</strong>	</h5>	
+					</div>
+					<br />
+					
+					<div class="container"><h5 class="font-italic"><strong>Muffled :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci12]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci12]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci12%>)</strong>	</h5>	
+					</div>
+					<br />
+					
+					<div class="container"><h5 class="font-italic"><strong>Murmurs :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci13]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci13]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci13%>)</strong>	</h5>	
+					</div>
+					<br />
+
+					<div class="container"><h5 class="font-italic"><strong>Gallops :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci14]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci14]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci14%>)</strong>	</h5>	
+					</div>
+					<br />
+					
+					<div class="container"><h5 class="font-italic"><strong>Irregular :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci15]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci15]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci15%>)</strong>	</h5>	
+					</div>
+				</div>
+				
+			
+				<h3>Systolic Murmurs:<input type="checkbox" name="doc[ci2]"  id="ci2" onclick="smf()" value="Yes"></h3>
+				
+				<div id="smop1" style="display: none;">
+					
+					<div class="container"><h5 class="font-italic"><strong>Aortic Stenosis :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci21]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci21]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci21%>)</strong>	</h5>	
+					</div>
+					<br />
+	
+					<div class="container"><h5 class="font-italic"><strong>Mitral Regurgutation :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci22]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci22]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci22%>)</strong>	</h5>	
+					</div>
+					
+				</div>
+				
+				<h3>Diastolic Murmurs: <input type="checkbox" name="doc[ci3]" id="ci3"  onclick="dmf()" value="Yes"></h3>
+				
+				<div id="dmop" style="display: none;">
+				
+					<div class="container"><h5 class="font-italic"><strong>Aortic Regurgitation :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci31]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci31]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci31%>)</strong>	</h5>	
+					</div>
+					<br />
+	 			
+	 				<div class="container"><h5 class="font-italic"><strong>Mitral Regurgutation :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci32]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci32]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci32%>)</strong>	</h5>	
+					</div>
+	 				<br />
+	 				<div class="container"><h5 class="font-italic"><strong>Pulmonic Regurgutation :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci33]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci33]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci33%>)</strong>	</h5>	
+					</div>
+	 				<br />
+	 				<div class="container"><h5 class="font-italic"><strong>Mitral Stenosis :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci34]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci34]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci34%>)</strong>	</h5>	
+					</div>
+	 				</div>
+				
+				<h4>BP: <input type="text" name="doc[ci4]" size="7"  value="<%=doctorblog.ci4%>"><br /></h4>
+				<h4 class="font-italic"><strong>BP Area:<input type="checkbox" id="ci5" name="doc[ci5]" onclick="smf2()"></strong></h4>
+				<h4>
+				<div id="smop2" style="display: none;">
+
+					<div class="container"><h5 class="font-italic"><strong>Left Side :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci51]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci51]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci51%>)</strong>	</h5>	
+					</div>
+					<br />
+
+					<div class="container"><h5 class="font-italic"><strong>Right Side :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci52]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci52]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci52%>)</strong>	</h5>	
+					</div>
+				</div>
+				</h4>
+				<div class="btn2">
+				<br>	
+					<div class="container"><h4 class="font-italic">
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci61]" onclick="haemf()" value="Haemorrhagic">Haemorrhagic</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci61]" onclick="nonhaemf()" value="Non-Haemorrhagic" >Non-Haemorrhagic</label></h4>
+		               <h5><strong style="color:red;">(previous value:<%=doctorblog.ci61%>)</strong>	</h5>	
+					</div>
+				</div>
+				<div id="haemd" style="display: none;">
+					Nothing
+				</div>
+				<div id="nonhaemd" style="display: none;">	
+		
+					<div class="container"><h6 class="font-italic"><strong>Cardiogenic :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci71]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci71]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci71%>)</strong>	</h6>	
+					</div>
+					<br>
+	 				<div class="container"><h6 class="font-italic"><strong>Neurogenic :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci72]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci72]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci72%>)</strong>	</h6>	
+					</div>
+	 				<br>
+	 				<div class="container"><h6 class="font-italic"><strong>Septic :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci73]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci73]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci73%>)</strong>	</h6>	
+					</div>
+	 				<br>
+					<div class="container"><h6 class="font-italic"><strong>Anaphylactic :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci74]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci74]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci74%>)</strong>	</h6>	
+					</div>
+				</div>
+				<h3><strong>Shock</strong></h3>
+				
+					<div class="container"><h5 class="font-italic"><strong>Mental :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci81]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci81]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci81%>)</strong>	</h5>	
+					</div>
+					<br />
+	 				<div class="container"><h5 class="font-italic"><strong>Tachycardia :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci82]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci82]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci82%>)</strong>	</h5>	
+					</div>
+				
+				<h3><strong>Intervention</strong></h3>
+				<h4>				
+					<div class="container"><h5 class="font-italic"><strong>Cardiac Monitor :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci91]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci91]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci91%>)</strong>	</h5>	
+					</div>
+					<br />
+	 				<div class="container"><h5 class="font-italic"><strong>BP Monitor :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[ci92]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[ci92]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.ci92%>)</strong>	</h5>	
+					</div>
+				</h4>
+				<h4 class="font-italic">Size: <input type="text" name="doc[ci10]" size="10" value="<%=doctorblog.ci10%>"><br /></h4>
+				<h4 class="font-italic">Site: <input type="text" name="doc[ci11]" size="10" value="<%=doctorblog.ci11%>"><br /></h4>
+			</div>
+		</div>
+
+		<div class="jumbotron border border-danger rounded"><h2><strong>Circulation Feel</strong></h2>
+		<hr>
+		<div class="btn2">
+					<p class="badge badge-success text-wrap text-center" style="width: 60rem; height:3rem;  font-size:1.5rem; text-align:center" onclick="feltf()">Radial Felt</p>
+					<p class="badge badge-success text-wrap text-center" style="width: 60rem; height:3rem;  font-size:1.5rem; text-align:center" onclick="notfeltf()">Radial Not Felt</p>	
+			</div>
+			<div id="feltd" style="display: none;">
+				<h3>Nothing.</h3>
+			</div>
+			<br/ ><br />
+			<div id="notfeltd" style="display: none;">
+				<div class="btn2">
+					<p class="badge badge-warning text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1rem; text-align:center" onclick="testerx()">Caritod Felt</p>
+					<p class="badge badge-warning text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1rem; text-align:center" onclick="testery()">Caritod Not Felt</p
+					>	
+				</div>
+			</div>
+			<br />
+			<div id="testerd" style="display: none;">
+				<div class="btn4">
+					<h3>Rate: <input type="checkbox" id="cf1" name="doc[cf1]" value="<%=doctorblog.cf1%>" onclick="ratef()"></h3>
+					<h4>
+					<div id="rateop" style="display: none;">
+						<div class="container"><h5 class="font-italic"><strong>Tachycardia :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cf11]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cf11]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.cf11%>)</strong>	</h5>	
+					</div>
+						
+					<div class="container"><h5 class="font-italic"><strong>Bradycardia :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cf12]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cf12]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.cf12%>)</strong>	</h5>	
+					</div>
+					</div>
+					</h4>
+				
+			
+					<h3>Quality:<input type="checkbox" id="cf2" name="doc[cf2]" value="Yes" onclick="qualf()"></h3>
+					<h4>
+					<div id="qualop" style="display: none;">
+						<div class="container"><h5 class="font-italic"><strong>Normal:-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cf21]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cf21]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.cf21%>)</strong>	</h5>	
+						</div>
+						<div class="container"><h5 class="font-italic"><strong>Weak :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cf22]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cf22]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.cf22%>)</strong>	</h5>	
+						</div>
+						
+						<div class="container"><h5 class="font-italic"><strong>Thready :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cf23]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cf23]" value="No" >No</label>
+		               <strong style="color:red;">(previous value:<%=doctorblog.cf23%>)</strong>	</h5>	
+						</div>
+						
+						<div class="container"><h5 class="font-italic"><strong>Bounding :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cf24]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cf24]" value="No" >No</label>
+		                <strong style="color:red;">(previous value:<%=doctorblog.cf24%>)</strong>	</h5>	
+						</div>
+					</div>
+					</h4>
+					<h3>Regularity: <input type="checkbox" id="cf3" name="doc[cf3]" value="Yes" onclick="regf()"></h3>
+					<h4>
+					<div id="regop" style="display: none;">
+						<div class="container"><h5 class="font-italic"><strong>Regular :-</strong>
+			
+							<label class="radio-inline"><input type="radio" name="doc[cf31]" value="Yes">Yes</label>
+				
+  							<label class="radio-inline"><input type="radio" name="doc[cf31]" value="No" >No</label>
+		                <strong style="color:red;">(previous value:<%=doctorblog.cf31%>)</strong>	</h5>	
+						</div>
+		 				<div class="container"><h5 class="font-italic"><strong>Irregular :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[cf32]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[cf32]" value="No" >No</label>
+		                <strong style="color:red;">(previous value:<%=doctorblog.cf32%>)</strong>	</h5>	
+						</div>
+					</div>
+					</h4>
+					<h3>Pulses:<input type="checkbox" id="cf4" onclick="pulf()" value="Yes"></h3>
+					<div id="pulseod" style="display: none;">
+						<div class="btn2">
+							<p class="badge badge-info text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1rem; text-align:center" id="cf41" name="doc[cf41]" value="Yes" onclick="equalf()">Equal</p>
+							<p class="badge badge-info text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1rem; text-align:center" id="cf42" name="doc[cf41]" value="Yes" onclick="unequalf()">Absent/Decreased</p>
+						</div>
+						<div id="equald" style="display: none;">
+							<h3>Nothing.</h3>
+						</div>
+						<div id="unequald" style="display: none;">
+							<br/>
+							<div class="btn2">
+								<p class="badge badge-primary text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1rem; text-align:center" id="cf421" onclick="rightf()">Right</p>
+								<p class="badge badge-primary text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1rem; text-align:center" id="cf422" onclick="leftf()">Left</p>
+							</div>
+						</div>
+						<div id="leftd1" style="display:none;">
+							<h4>
+							<div class="container"><h5 class="font-italic"><strong>Radial :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4221]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4221]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4221%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Branchial :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4222]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4222]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4222%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Axillary :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4223]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4223]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4223%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Femoral :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4224]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4224]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4224%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Poplitial :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4225]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4225]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4225%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Dorsalis :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4226]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4226]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4226%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Pedis :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4227]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4227]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4227%>)</strong>	</h5>	
+							</div>
+							</h4>
+						</div>
+						<div id="rightd1" style="display:none;">
+							<div class="container"><h5 class="font-italic"><strong>Radial :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4211]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4211]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4211%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Branchial :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4212]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4212]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4212%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Axillary :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4213]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4213]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4213%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Femoral :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4214]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4214]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4214%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Poplitial :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4215]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4215]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4215%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Dorsalis :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4216]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4216]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4216%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Pedis :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[cf4217]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[cf4217]" value="No" >No</label>
+		            			 <strong style="color:red;">(previous value:<%=doctorblog.cf4217%>)</strong>	</h5>	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="testere" style="display: none;">
+				<h2>Start CPR.</h2>
+			</div>
+	</div>	
+	<script type="text/javascript">
+		var look = document.getElementById("lookd");
+  		var listen = document.getElementById("listend");
+  		var feel = document.getElementById("feeld");
+  		var norm = document.getElementById("normald");
+		var abnorm = document.getElementById("abnormald");
+		var right=document.getElementById("rightd");
+  		var left=document.getElementById("leftd");
+  		var equal=document.getElementById("equald");
+  		var unequal=document.getElementById("unequald");
+  		
+		function lookf() {
+ 			listen.style.display="none";
+ 			feel.style.display="none";
+     		look.style.display = "block";
+  		}
+  		function listenf() {
+  			feel.style.display="none";
+     		look.style.display = "none";
+  			listen.style.display="block";
+  		}
+  		function feelf() {
+  			listen.style.display="none";
+  			look.style.display="none";
+  			feel.style.display="block";
+  		}
+  		function normal() {
+  			abnorm.style.display="none";
+  			norm.style.display="block";
+  		}
+  		function abnormal() {
+  			norm.style.display="none";
+  			abnorm.style.display="block";
+  		}
+  		function broncf() {
+  			var bronc= document.getElementById("broncd");
+  			bronc.style.display="block";
+  		}
+  		var notfelt = document.getElementById("notfeltd");
+  		var felt = document.getElementById("feltd");
+  		var testd = document.getElementById("testerd");
+  		var teste = document.getElementById("testere");
+  		function notfeltf() {
+  			felt.style.display="none";
+  			notfelt.style.display="block";
+  		}
+  		function feltf() {
+  			notfelt.style.display="none";
+  			testd.style.display="none";
+  			teste.style.display="none";
+  			felt.style.display="block";
+  		}
+  		
+  		function testerx() {
+  			teste.style.display="none";
+  			testd.style.display="block";
+  		}
+  		function testery() {
+  			testd.style.display="none";
+  			teste.style.display="block";
+  		}
+
+  		function ratef() {
+  			var checkBox = document.getElementById("cf1");
+  			var text = document.getElementById("rateop");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			checkBox.value="Yes";
+    			
+  			} else {
+  				checkBox.value="No";
+     			text.style.display = "none";
+  			}
+  		}
+
+  		function qualf() {
+  			var checkBox = document.getElementById("cf2");
+  			var text = document.getElementById("qualop");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			
+  			} else {
+     			text.style.display = "none";
+  			}
+  		}
+  		function regf() {
+  			var checkBox = document.getElementById("cf3");
+  			var text = document.getElementById("regop");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			
+  			} else {
+     			text.style.display = "none";
+  			}
+  		}
+  		
+  		function pulf() {
+  			var checkBox = document.getElementById("cf4");
+  			var text = document.getElementById("pulseod");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			
+  			} else {
+     			text.style.display = "none";
+  			}
+  		}
+  		
+  		
+  		function equalf() {
+  			left.style.display="none";
+  			right.style.display="none";
+  			unequal.style.display="none";
+  			equal.style.display="block";
+  		}
+  		function unequalf() {
+  			equal.style.display="none";
+  			unequal.style.display="block";
+  		}
+
+  		
+  		function rightf() {
+  			leftd1.style.display="none";
+  			rightd1.style.display="block";
+  		}
+  		function leftf() {
+  			rightd1.style.display="none";
+  			leftd1.style.display="block";
+  		}
+  		function hsf() {
+  			var checkBox = document.getElementById("ci1");
+  			var text = document.getElementById("hsop");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			
+  			} else {
+     			text.style.display = "none";
+  			}	
+  		}
+  		function smf() {
+  			var checkBox = document.getElementById("ci2");
+  			var text = document.getElementById("smop1");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			
+  			} else {
+     			text.style.display = "none";
+  			}	
+  		}
+  		function dmf() {
+  			var checkBox = document.getElementById("ci3");
+  			var text = document.getElementById("dmop");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			
+  			} else {
+     			text.style.display = "none";
+  			}	
+  		}
+  		function home() {
+  			location.replace("homepage.html");
+  		}
+  		var nonhaemd = document.getElementById("nonhaemd");
+  		var haemd = document.getElementById("haemd");
+  		function nonhaemf()
+  		{
+  			haemd.style.display="none";
+  			nonhaemd.style.display="block";	
+  		}
+  		function haemf()
+  		{
+  			haemd.style.display="block";
+  			nonhaemd.style.display="none";	
+  		}
+  		function smf2() {
+  			var checkBox = document.getElementById("ci5");
+  			var text = document.getElementById("smop2");
+  			if (checkBox.checked == true){
+    			text.style.display = "block";
+    			
+  			} else {
+     			text.style.display = "none";
+  			}	
+  		}
+  		fu
+  	</script>
+
+
+
+</div>
+  
+
+</div>
+
+</p>
+
+
+
+<p class="badge badge-danger text-wrap text-left" style="width: 67rem; height:3rem;  font-size:2rem" onclick="mydFunction()">Disability
+<div id="myDir" style="display:none;">
+
+
+<div class="container " > <h1 class="text-center "></h1>
+		<div class="jumbotron border border-primary rounded">
+		
+		<div class="box1">
+				<H3 ><strong>Level Of Consciousness</strong></H3>
+				
+					<div class="container"><h5 class="font-italic"><strong>Conscious :-</strong>
+				
+					<label class="radio-inline"><input type="radio" name="doc[d1]" value="Yes">Yes</label>
+				
+  					<label class="radio-inline"><input type="radio" name="doc[d1]" value="No" >No</label>
+		               <strong style="color:#4863A0;">(previous value:<%=doctorblog.d1%>)</strong>	</h5>	
+					</div>
+				
+				
+		</div>
+		
+		
+		<div class="box2">
+				<h3><strong>Pupil</strong></h3>
+				<h3>Normal:<input type="checkbox" id="d2" name="doc[d2]" value="Yes" onclick="normf()"></h3>
+					<h4>
+					<div id="normd" style="display: none;">
+						<div class="container"><h5 class="font-italic"><strong>Constructed :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[d21]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[d21]" value="No" >No</label>
+		        	       <strong style="color:#4863A0;">(previous value:<%=doctorblog.d21%>)</strong>	</h5>	
+						</div>
+						<div class="container"><h5 class="font-italic"><strong>Dilated :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[d22]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[d22]" value="No" >No</label>
+		            	<strong style="color:#4863A0;">(previous value:<%=doctorblog.d22%>)</strong>	</h5>	
+						</div>
+					</div>
+					</h4>
+			
+					<h3>Non-Reactive:<input type="checkbox" id="d3" name="doc[d3]" value="Yes" onclick="nrf()"></h3>
+					<h4>
+					<div id="nrd" style="display: none;">
+						<div class="container"><h5 class="font-italic"><strong>Right :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[d31]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[d31]" value="No" >No</label>
+		            	<strong style="color:#4863A0;">(previous value:<%=doctorblog.d31%>)</strong>	</h5>	
+						</div>
+						<div class="container"><h5 class="font-italic"><strong>Left :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[d32]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[d32]" value="No" >No</label>
+		            	<strong style="color:#4863A0;">(previous value:<%=doctorblog.d32%>)</strong>	</h5>	
+						</div>
+					</div>
+					</h4>
+					<h3>Shyguli:<input type="checkbox" id="d4" name="doc[d4]" value="Yes" onclick="shyf()">   </h3>
+					<h4>
+					<div id="shyd" style="display: none;">
+						<div class="container"><h5 class="font-italic"><strong>Right :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[d41]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[d41]" value="No" >No</label>
+		            	<strong style="color:#4863A0;">(previous value:<%=doctorblog.d41%>)</strong>	</h5>	
+						</div>
+						<div class="container"><h5 class="font-italic"><strong>Left :-</strong>
+				
+						<label class="radio-inline"><input type="radio" name="doc[d42]" value="Yes">Yes</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[d42]" value="No" >No</label>
+		            	<strong style="color:#4863A0;">(previous value:<%=doctorblog.d42%>)</strong>	</h5>	
+						</div>
+					</div>
+					</h4>
+		</div>
+		<br>
+		<br>
+		
+			<div class="box3">
+					<div class="container"><h3 class="font-italic"><strong>Tone :</strong></h3> 
+						<br><h4>
+						<label class="radio-inline"><input type="radio" name="doc[d51]" id="d51" value="Normal Tone" onclick="ntf()">Normal Tone</label>
+				
+  						<label class="radio-inline"><input type="radio" name="doc[d51]" id="d52" value="Hypotomia" onclick="htf()">Hypotomia</label>
+		            	<strong style="color:#4863A0;">(previous value:<%=doctorblog.d51%>)</strong>	</h4>	
+					</div>
+						<div id="ntd" style="display: none;">	
+							<strong>Nothing Required</strong>
+						</div><br>
+						<br >
+						<div id="htd" style="display: none;">
+						
+							<div class="container"><h5 class="font-italic"><strong>Central Hypotomia :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d521]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d521]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d521%>)</strong>	</h5>	
+							</div>
+							<br >
+							<div class="container"><h5 class="font-italic"><strong>Peripheral Hypotomia :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d522]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d522]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d522%>)</strong>	</h5>	
+							</div>
+					
+						
+						</div>
+						<h3>Increased tone:  <input type="checkbox" name="doc[d53]" id="d53" value="Yes" onclick="itf()"></h3>
+						<div id="itd" style="display: none;">
+							<h4>
+							<div class="container"><h5 class="font-italic"><strong>Spasticity :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d531]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d531]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d531%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Pystonia :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d532]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d532]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d532%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Rigidity :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d533]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d533]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d533%>)</strong>	</h5>	
+							</div>
+							</h4>
+						</div>	
+			</div>
+			<br>
+			<br>
+			
+			<div class="box4">
+			<div class="btn4">
+				<h3><strong>Motor</strong></h3>
+			</div><br>
+			<div id="motord">
+				<div class="btn4">
+					<p class="badge badge-success text-wrap text-center" style="width: 60rem; height:4rem;  font-size:2rem; text-align:center" onclick="ndf()" id="d61" name="doc[d61]" >Normal</p>
+					<p class="badge badge-success text-wrap text-center" style="width: 60rem; height:4rem;  font-size:2rem; text-align:center" onclick="abndf()" id="d62" name="doc[d62]">Abnormal</p>
+				</div><br />
+				<div id="ndd" style="display: none;">
+						<h4 id="Nothing">Nothing</h4>
+				</div><br />
+				<div id="abndd" style="display: none;">		
+					<div class="btn4">
+						<p class="badge badge-warning text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1.5rem; text-align:center" onclick="leftf2()" name="doc[normalleft]">Left</p>
+						<p class="badge badge-warning text-wrap text-center" style="width: 60rem; height:2rem;  font-size:1.5rem; text-align:center" onclick="rightf2()" name="doc[normalright]">Right</p>
+					</div><br />
+					<div id="ops">	
+						<div id="rops" style="display: none;">
+							<h4>
+							<div class="container"><h5 class="font-italic"><strong>Upper Limb :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d631]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d631]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d631%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Lower Limb :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d632]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d632]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d632%>)</strong>	</h5>	
+							</div>
+							</h4>
+						</div>
+						<div id="lops" style="display: none;">
+							<h4>
+							<div class="container"><h5 class="font-italic"><strong>Upper Limb :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d641]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d641]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d641%>)</strong>	</h5>	
+							</div>
+							<div class="container"><h5 class="font-italic"><strong>Lower Limb :-</strong>
+				
+								<label class="radio-inline"><input type="radio" name="doc[d642]" value="Yes">Yes</label>
+				
+  								<label class="radio-inline"><input type="radio" name="doc[d642]" value="No" >No</label>
+		            			<strong style="color:#4863A0;">(previous value:<%=doctorblog.d642%>)</strong>	</h5>	
+							</div>
+							</h4>
+						</div>
+					</div>
+				</div>
+			
+		
+			
+		
+	</div>
+<script type="text/javascript">
+	function normf() {
+  		var checkBox = document.getElementById("d2");
+  		var text = document.getElementById("normd");
+  		if (checkBox.checked == true){
+    		text.style.display = "block";
+    	}
+    	else
+    	{
+     			text.style.display = "none";
+  		}	
+  	}
+  	function nrf() {
+  		var checkBox = document.getElementById("d3");
+  		var text = document.getElementById("nrd");
+  		if (checkBox.checked == true){
+    		text.style.display = "block";
+    	}
+    	else
+    	{
+     			text.style.display = "none";
+  		}	
+  	}
+  	function shyf() {
+  		var checkBox = document.getElementById("d4");
+  		var text = document.getElementById("shyd");
+  		if (checkBox.checked == true){
+    		text.style.display = "block";
+    	}
+    	else
+    	{
+     			text.style.display = "none";
+  		}	
+  	}
+  	function ntf() {
+  		var checkBox = document.getElementById("d51");
+  		var text = document.getElementById("ntd");
+  		var text1 = document.getElementById("htd");
+  		if (checkBox.checked == true){
+    		text.style.display = "block";
+    		text1.style.display = "none";
+    	}
+    	else
+    	{
+     			text.style.display = "none";
+  		}	
+  	}
+  	function htf() {
+  		var checkBox = document.getElementById("d52");
+  		var text = document.getElementById("htd");
+  		var text1 = document.getElementById("ntd");
+  		if (checkBox.checked == true){
+    		text.style.display = "block";
+    		text1.style.display = "none";
+    	}
+    	else
+    	{
+     			text.style.display = "none";
+  		}	
+  	}
+  	function itf() {
+  		var checkBox = document.getElementById("d53");
+  		var text = document.getElementById("itd");
+  		if (checkBox.checked == true){
+    		text.style.display = "block";
+    	}
+    	else
+    	{
+     			text.style.display = "none";
+  		}	
+  	}
+  	function home() {
+  			location.replace("homepage.html");
+  	}
+  	var motord = document.getElementById("motord");
+	var ndd = document.getElementById("ndd");
+	var abndd = document.getElementById("abndd");
+	var lops = document.getElementById("lops");
+	var rops = document.getElementById("rops");
+	var sampd = document.getElementById("sampd");
+	
+
+	function motorf() {
+ 		motord.style.display = "block";
+ 		ndd.style.display = "none";
+  		abndd.style.display = "none";
+ 		lops.style.display = "none";
+		rops.style.display = "none";
+  	}
+  	function ndf()
+  	{
+  		ndd.style.display = "block";
+  		abndd.style.display = "none";
+  		lops.style.display = "none";
+		rops.style.display = "none";
+  	}
+  	function abndf()
+  	{
+  		abndd.style.display = "block";
+  		ndd.style.display = "none";
+  	}
+  	function leftf2()
+  	{
+  		lops.style.display = "block";
+		rops.style.display = "none";
+  	}
+    function rightf2()
+  	{
+  		lops.style.display = "none";
+		rops.style.display = "block";
+  	}
+  	function sampf()
+  	{
+  		
+  		location.replace("#");
+  	}
+  	
+</script>
+</div>
+</div>
+</div>
+</div>
+
+</p>
+
+
+
+<p class="badge badge-dark text-wrap text-left" style="width: 67rem; height:3rem;  font-size:2rem" onclick="myeFunction()">Exposure
+<div id="myEir" style="display:none;">
+ 
+<div class="jumbotron container border border-danger rounded">
+		
+		<table class="impairments" style="padding:15px;">
+			<tr>
+				<td>
+					<h3>Hearing Problem</h3>
+					
+					<h4><strong style="color:#4863A0;">(previous value:<%=doctorblog.e11%>)</strong>
+						<br>
+						<input type="radio" name="doc[e11]" value="Yes"> Yes
+						<input type="radio" name="doc[e11]" value="No"> No
+					</h4>
+				</td>
+				<td>
+					<h3>Visual Impairments</h3>
+					
+					<h4>
+						<strong style="color:#4863A0;">(previous value:<%=doctorblog.e21%>)</strong>
+						<br>
+						<input type="radio" name="doc[e21]"	value="yes"> Yes
+						<input type="radio" name="doc[e21]" value="no"> No
+					</h4>
+				</td>
+			</tr>
+		</table>
+		<table cellspacing="25" class="asses">
+			<tr>
+				<td>
+					<h3>
+					Deformities:
+ 					<input type="text" name="doc[e31]" size="30" value="<%=doctorblog.e31%>"><br></h3><h3>
+ 					Contusion:
+ 					<input type="text" name="doc[e32]" size="30" value="<%=doctorblog.e32%>"><br></h3><h3>
+ 					Abrasions:
+ 					<input type="text" name="doc[e33]" size="30" value="<%=doctorblog.e33%>"><br></h3><h3>
+ 					Punctures:
+ 					<input type="text" name="doc[e34]" size="30" value="<%=doctorblog.e34%>"><br></h3><h3>
+ 					Burns:
+ 					<input type="text" name="doc[e35]" size="30" value="<%=doctorblog.e35%>"><br></h3><h3>
+ 					Tenderness:
+ 					<input type="text" name="doc[e36]" size="30" value="<%=doctorblog.e36%>"><br></h3><h3>
+ 					Lacerations:
+ 					<input type="text" name="doc[e37]" size="30" value="<%=doctorblog.e37%>"><br></h3><h3>
+ 					Swelling:
+ 					<input type="text" name="doc[e38]" size="30" value="<%=doctorblog.e38%>"><br>
+ 				</h3>
+				</td>
+				<td>
+					<h3>
+					Chest:
+ 					<input type="text" name="doc[e41]" size="30"  value="<%=doctorblog.e41%>"><br></h3><h3>
+ 					Abdomen:
+ 					<input type="text" name="doc[e42]" size="30" value="<%=doctorblog.e42%>"><br>
+ 					</h3><h3>
+ 					Pelvis:
+ 					<input type="text" name="doc[e43]" size="30" value="<%=doctorblog.e43%>"><br>
+ 					</h3><h3>
+ 					Extremities:
+ 					<input type="text" name="doc[e44]" size="30" value="<%=doctorblog.e44%>"><br>
+ 					</h3>
+ 					<h3>
+ 					Nose:
+ 					<input type="text" name="doc[e45]" size="30" value="<%=doctorblog.e45%>"><br>
+ 					</h3>
+ 					<h3>
+ 					Skull:
+ 					<input type="text" name="doc[e46]" size="30" value="<%=doctorblog.e46%>"><br>
+ 					</h3><h3>
+ 					Spine:
+ 					<input type="text" name="doc[e47]" size="30" value="<%=doctorblog.e47%>"><br>
+ 					</h3><h3>
+ 					Back:
+ 					<input type="text" name="doc[e48]" size="30" value="<%=doctorblog.e48%>"><br>	
+					</h3>
+				</td>
+			</tr>
+		</table>
+		<table class="impressions">
+			<tr>
+				<td>
+					<h3>Is the current treatment improving patient's conditon?</h3>
+					<h4><strong style="color:#4863A0;">(previous value: <%=doctorblog.e5%>)</strong>
+					<br>
+						<input type="radio" name="doc[e5]" value="Yes"> Yes
+						<input type="radio" name="doc[e5]" value="No"> No
+				</td>
+				<td>
+					<h3>Has an already identified problem gotten better?</h3>
+					<h4><strong style="color:#4863A0;">(previous value: <%=doctorblog.e6%>)</strong>
+						<br>
+						<input type="radio" name="doc[e6]" value="Yes" > Yes
+						<input type="radio" name="doc[e6]" value="No"> No
+					</h4>
+				</td>
+				<td>
+					<h3>Has an already identified problem gotten worse?</h3>
+					<h4>
+					<strong style="color:#4863A0;">(previous value: <%=doctorblog.e7%>)</strong>
+					<br>
+						<input type="radio" name="doc[e7]" value="Yes"> Yes
+						<input type="radio" name="doc[e7]" value="No"> No
+					</h4>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+
+
+</div>
+</p>
+
+
+
+<p class="badge badge-danger text-wrap text-left" style="width: 67rem; height:3rem;  font-size:2rem" onclick="mymFunction()">MEES Score
+<div id="myMir" style="display:none;">
+ 
+
+
+    <br>
+    <div class="container " > <h1 class="text-center "></h1>
+      <div class="jumbotron border border-danger rounded"><h2><strong>Parameters</strong></h2>
+      <hr>
+      <div class="container"><h3 class="font-italic"><strong>Glasgow Coma Scale:</strong></h3>
+        <h5>
+        <select name="doc[GCS]" id="GCS">
+            <option value="4">15</option>
+            <option value="3">12-14</option>
+            <option value="2">8-11</option>
+            <option value="1"><=7</option>
+        </select>
+        </h5>
+      </div>
+      <div class="container"><h3 class="font-italic"><strong>Heart Rate:</strong></h3>
+        <h5>
+        <select name="doc[HR]" id="HR">
+            <option value="1"><=39</option>
+            <option value="2">40-49</option>
+            <option value="3">50-59</option>
+            <option value="4" selected>60-100</option>
+            <option value="3">101-130</option>
+            <option value="2">131-160</option>
+            <option value="1">>=160</option>
+        </select>
+        </h5>
+      </div>
+      <div class="container"><h3 class="font-italic"><strong>Respiratory Rate:</strong></h3>
+        <h5>
+        <select name="doc[RR]" id="RR">
+            <option value="1"><=4 Breaths per minute</option>
+            <option value="2">5-7</option>
+            <option value="3">8-11</option>
+            <option value="4" selected>12-18</option>
+            <option value="3">19-24</option>
+            <option value="2">25-30</option>
+            <option value="1">>=30</option>
+        </select>
+        </h5>
+      </div>
+      <div class="container"><h3 class="font-italic"><strong>Cardiac Rhythm:</strong></h3>
+        <h5>
+        <select name="doc[CR]" id="CR">
+            <option value="4">Sinus Rhythm</option>
+            <option value="3">Supraventricular/Isolated ventricular Extrasystole(SVES) </option>
+            <option value="2">Multiple  ventricular Extrasystole ABSARRH</option>
+            <option value="1">Ventricular Tachycardia/ Ventricular Fibrillation/ Asystole</option>
+        </select>
+        </h5>
+      </div>
+      <div class="container"><h3 class="font-italic"><strong>Pain:</strong></h3>
+        <h5>
+        <select name="doc[Pain]" id="Pain">
+            <option value="4">None</option>
+            <option value="3" selected>Mild</option>
+            <option value="2">Strong</option>
+            <option value="1">Entfallt (Extreme/Collapse)</option>
+        </select>
+        </h5>
+      </div>
+      <div class="container"><h3 class="font-italic"><strong>Blood Pressure:</strong></h3>
+        <h5>
+        <select name="doc[BP]" id="BP">
+            <option value="1"><= 79/59</option>
+            <option value="2">80/60 - 99/69</option>
+            <option value="3">100/70 - 119/79</option>
+            <option value="4" selected>120/80 - 140/90</option>
+            <option value="3">141/91 - 159/94</option>
+            <option value="2">160/95 - 229/119</option>
+            <option value="1">>= 230/120</option>
+        </select>
+        </h5>
+      </div>
+      <div class="container"><h3 class="font-italic"><strong>Oxygen Sturation:</strong></h3>
+        <h5>
+        <select name="doc[OS]" id="OS">
+            <option value="4">96 - 100%</option>
+            <option value="3">91 - 95%</option>
+            <option value="2">86 - 90%</option>
+            <option value="1"><= 85%</option>
+        </select>
+        </h5>
+      </div>
+      <hr>
+      <p class="badge badge-success text-wrap text-center" style="width: 20rem; height:5rem;  font-size:2rem; text-align:center" onclick="MEESCalc()">Calculate MEES Score</p>
+     
+      <div class="container" id="MEESDisp">
+        
+        <h4 class="font-italic">
+          <strong>MEES Score = 
+            <input type="text" class="meesstyle"name="doc[MEESScore]" id="MEESScore" readonly size="1" value="<%=doctorblog.MEESScore%>"> <!--Element to pass to output page -->
+          </strong>
+          <br>
+          
+        </h4>
+        <h5 class="font-italic" id="asterisk" style="display: none;">"*" indicates condition is life-threatening.</h5>
+      </div>  
+    </div>
+  
+  </div>
+</div>
+
+
+
+
+</p>
+
+
+
+
+
+
+
+
+
+		<br>
+				<input style="width: 67rem; height:4rem;  font-size:2rem" type="submit"class="btn btn-outline-dark" onclick="uncheck()">
+		<hr>
+
+
+
+
+
+
+
+
+</div>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+
+function myFunction(){
+    var x=document.getElementById("myAir");
+    if(x.style.display==="block")
+        x.style.display="none";
+    else
+        x.style.display="block";
+}
+
+
+function mycFunction(){
+  var c=document.getElementById("myCir");
+  if(c.style.display==="none")
+    c.style.display="block";
+  else
+    c.style.display="none"
+}
+
+
+function mybFunction(){
+    var b=document.getElementById("myBir");
+    if(b.style.display==="none")
+        b.style.display="block";
+    else
+        b.style.display="none"
+}
+
+function mydFunction(){
+    var d=document.getElementById("myDir");
+    if(d.style.display==="none")
+        d.style.display="block";
+    else
+        d.style.display="none"
+}
+
+function myeFunction(){
+    var e=document.getElementById("myEir");
+    
+    if(e.style.display==="none")
+        e.style.display="block";
+    else
+        e.style.display="none"
+}
+
+function mymFunction(){
+    var m=document.getElementById("myMir");
+    
+    if(m.style.display==="block")
+        m.style.display="none";
+    else
+        m.style.display="block"
+}
+
+
+  function MEESCalc() {
+    var gcs = (document.getElementById("GCS"));
+    var hr = (document.getElementById("HR"));
+    var rr = (document.getElementById("RR"));
+    var cr = (document.getElementById("CR"));
+    var pain = (document.getElementById("Pain"));
+    var bp = (document.getElementById("BP"));
+    var os = (document.getElementById("OS"));
+  
+
+    var scoreDisp= document.getElementById("MEESDisp");
+    var score = parseInt(document.getElementById("MEESScore"));
+
+    var dd1 = parseInt(gcs.options[gcs.selectedIndex].value);
+      var dd2 = parseInt(hr.options[hr.selectedIndex].value);
+      var dd3 = parseInt(rr.options[rr.selectedIndex].value);
+      var dd4 = parseInt(cr.options[cr.selectedIndex].value);
+      var dd5 = parseInt(pain.options[pain.selectedIndex].value);
+      var dd6 = parseInt(bp.options[bp.selectedIndex].value);
+      var dd7 = parseInt(os.options[os.selectedIndex].value);
+    
+    scoreDisp.style.display = "block";
+
+    var score = dd1 + dd2 + dd3 + dd4 + dd5 + dd6 + dd7;
+    
+    if(dd1 == 1 || dd2 == 1 || dd3 == 1 || dd4 == 1 || dd5 == 1 || dd6 == 1 || dd7 == 1)
+    {
+      document.getElementById("MEESScore").value = score + "*";
+      document.getElementById("asterisk").style.display = "block";
+    }
+    else
+    {
+      document.getElementById("MEESScore").value = score;
+    }
+		
+}
+
+	function retrieve(id,v){
+		var checkBox = document.getElementById(id);
+  		 
+  			if (v == "Yes"){
+    		
+    			checkBox.checked="true";
+    		}
+	
+	}
+	function retrieveDD(id,v){
+	
+    	selectElement = document.querySelector(id); 
+       	selectElement.value= v;
+	}
+
+  
+	function callRetrieve(){
+
+			
+		var v1="<%=doctorblog.ofbOthers%>";
+		var v2="<%=doctorblog.ofbInjury%>";
+		var v3="<%=doctorblog.ofbDeformity%>";
+		var v4="<%=doctorblog.ofbSwelling%>";
+		retrieve('ofbSwelling',v4);
+		retrieve('ofbDeformity',v3);
+		retrieve('ofbInjury',v2);
+		retrieve('ofbOthers',v1);
+		callRetrieve2();
+		var val1="<%=doctorblog.GCS%>";
+		retrieveDD('GCS',val1);
+		var val2="<%=doctorblog.BP%>";
+		retrieveDD('BP',val2);
+		var val3="<%=doctorblog.CR%>";
+		retrieveDD('CR',val3);
+		var val4="<%=doctorblog.RR%>";
+		retrieveDD('RR',val4);
+		var val5="<%=doctorblog.HR%>";
+		retrieveDD('HR',val5);
+		var val6="<%=doctorblog.Pain%>";
+		retrieveDD('Pain',val6);
+		var val7="<%=doctorblog.OS%>";
+		retrieveDD('OS',val7);
+
+	}
+	function callRetrieve2(){
+		var v1="<%=doctorblog.ofbSuction%>";
+		retrieve('ofbSuction',v1);
+		var v2="<%=doctorblog.ofbChinlift%>";
+		retrieve('ofbChinlift',v2);
+		var v3="<%=doctorblog.ofbJawthrust%>";
+		retrieve('ofbJawthrust',v3);
+		var v4="<%=doctorblog.ostSecretions%>";
+		retrieve('ostSecretions',v4);
+		var v5="<%=doctorblog.ostSecretions%>";
+		retrieve('ostVomiting',v5);
+		var v6="<%=doctorblog.ostBloodloss%>";
+		retrieve('ostBloodloss',v6);
+		var v7="<%=doctorblog.ostHeadtilt%>";
+		retrieve('ostHeadtilt',v7);
+		var v8="<%=doctorblog.ostChinlift%>";
+		retrieve('ostChinlift',v8);
+		var v9="<%=doctorblog.ostJawthrust%>";
+		retrieve('ostJawthrust',v9);
+		var v10="<%=doctorblog.airSounds%>";
+		retrieve('airSounds',v10);
+		var v11="<%=doctorblog.airGrunting%>";
+		retrieve('airGrunting',v11);
+		var v12="<%=doctorblog.airSnoring%>";
+		retrieve('airSnoring',v12);
+		var v13="<%=doctorblog.airStrider%>";
+		retrieve('airStrider',v13);
+		var v14="<%=doctorblog.airGnurfling%>";
+		retrieve('airGnurfling',v14);
+		var v15="<%=doctorblog.airH%>";
+		retrieve('airH',v15);
+		var v16="<%=doctorblog.airIncomprehensive%>";
+		retrieve('airIncomprehensive',v16);
+		var v17="<%=doctorblog.airSuction%>";
+		retrieve('airSuction',v17);
+		var v18="<%=doctorblog.airChinlift%>";
+		retrieve('airChinlift',v18);
+		var v19="<%=doctorblog.airHeadtilt%>";
+		retrieve('airHeadtilt',v19);
+		var v20="<%=doctorblog.airJawthrust%>";
+		retrieve('airJawthrust',v20);
+		var v21="<%=doctorblog.feelSuction%>";
+		retrieve('feelSuction',v21);
+		var v22="<%=doctorblog.feelSwelling%>";
+		retrieve('feelSwelling',v22);
+		var v23="<%=doctorblog.feelDeformity%>";
+		retrieve('feelDeformity',v23);
+		var v24="<%=doctorblog.feelOthers%>";
+		retrieve('feelOthers',v24);
+		var v25="<%=doctorblog.feelChinLift%>";
+		retrieve('feelChinLift',v25);
+		var v26="<%=doctorblog.feelInjury%>";
+		retrieve('feelInjury',v26);
+		callRetrieve3();
+	}
+	function callRetrieve3(){
+		var v1="<%=doctorblog.bi11%>";
+		retrieve('bi11',v1);
+		var v2="<%=doctorblog.bi12%>";
+		retrieve('bi12',v2);
+		var v3="<%=doctorblog.bi21%>";
+		retrieve('bi21',v3);
+		var v4="<%=doctorblog.bi22%>";
+		retrieve('bi22',v4);
+		var v5="<%=doctorblog.bi23%>";
+		retrieve('bi23',v5);
+		var v6="<%=doctorblog.bi24%>";
+		retrieve('bi24',v6);
+		var v7="<%=doctorblog.bi25%>";
+		retrieve('bi25',v7);
+		var v8="<%=doctorblog.bi26%>";
+		retrieve('bi26',v8);
+		var v9="<%=doctorblog.bi261%>";
+		retrieve('bi261',v9);
+		var v10="<%=doctorblog.bi262%>";
+		retrieve('bi262',v10);
+		var v11="<%=doctorblog.bi263%>";
+		retrieve('bi263',v11);
+		var v12="<%=doctorblog.bi271%>";
+		retrieve('bi271',v12);
+		var v13="<%=doctorblog.bi272%>";
+		retrieve('bi272',v13);
+		var v14="<%=doctorblog.bi273%>";
+		retrieve('bi273',v14);
+		var v15="<%=doctorblog.bi274%>";
+		retrieve('bi274',v15);
+		var v16="<%=doctorblog.bi275%>";
+		retrieve('bi275',v16);
+		var v17="<%=doctorblog.bi281%>";
+		retrieve('bi281',v17);
+		var v18="<%=doctorblog.bi282%>";
+		retrieve('bi282',v18);
+		var v19="<%=doctorblog.bi283%>";
+		retrieve('bi283',v19);
+		var v20="<%=doctorblog.bi284%>";
+		retrieve('bi284',v20);
+		var v21="<%=doctorblog.bi285%>";
+		retrieve('bi285',v21);
+		var v22="<%=doctorblog.ci11%>";
+		retrieve('ci11',v22);
+		var v23="<%=doctorblog.ci12%>";
+		retrieve('ci12',v23);
+		var v24="<%=doctorblog.ci13%>";
+		retrieve('ci13',v24);
+		var v25="<%=doctorblog.ci14%>";
+		retrieve('ci14',v25);
+		var v26="<%=doctorblog.ci2%>";
+		retrieve('ci2',v26);
+		var v27="<%=doctorblog.ci2%>";
+		retrieve('ci21',v27);
+		var v28="<%=doctorblog.ci21%>";
+		retrieve('ci22',v28);
+		var v29="<%=doctorblog.ci22%>";
+		retrieve('ci3',v29);
+		var v30="<%=doctorblog.ci3%>";
+		retrieve('ci31',v30);
+		var v31="<%=doctorblog.ci31%>";
+		retrieve('ci31',v31);
+		var v32="<%=doctorblog.ci32%>";
+		retrieve('ci32',v32);
+		var v33="<%=doctorblog.ci33%>";
+		retrieve('ci33',v33);
+		var v34="<%=doctorblog.ci34%>";
+		retrieve('ci34',v34);
+		var v35="<%=doctorblog.ci5%>";
+		retrieve('ci5',v35);
+		var v36="<%=doctorblog.ci51%>";
+		retrieve('ci51',v36);
+		var v37="<%=doctorblog.ci52%>";
+		retrieve('ci52',v37);
+		var v38="<%=doctorblog.ci61%>";
+		retrieve('ci61',v38);
+		var v39="<%=doctorblog.ci62%>";
+		retrieve('ci62',v39);
+		var v40="<%=doctorblog.ci71%>";
+		retrieve('ci71',v40);
+		var v41="<%=doctorblog.ci72%>";
+		retrieve('ci72',v41);
+		var v42="<%=doctorblog.ci73%>";
+		retrieve('ci73',v42);
+		var v43="<%=doctorblog.ci74%>";
+		retrieve('ci74',v43);
+		var v44="<%=doctorblog.ci81%>";
+		retrieve('ci81',v44);
+		var v45="<%=doctorblog.ci82%>";
+		retrieve('ci82',v45);
+		var v46="<%=doctorblog.ci91%>";
+		retrieve('ci91',v46);
+		var v47="<%=doctorblog.ci92%>";
+		retrieve('ci92',v47);
+
+	}
+</script>
+
+</body>
+</html>
