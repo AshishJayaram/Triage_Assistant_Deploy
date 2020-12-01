@@ -1,0 +1,96 @@
+<html>
+<head>
+	<title>main Login page</title>
+		<script src="https://kit.fontawesome.com/ac0527b785.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Montserrat:wght@300&display=swap" rel="stylesheet">
+		<style type="text/css">
+			#main{
+				margin-top:15px;
+				margin-left:75%;
+				font-size:25px;
+				color:black;
+}
+			#interncard{
+				margin-top:50px;
+				margin-left:30%;
+				width: 18rem;
+				display:inline;
+
+			}
+
+			#doctorcard{
+								margin-top:50px;
+				margin-left:30%;
+				display:inline;
+				
+			}
+
+			#nursecard{
+								margin-top:50px;
+				margin-left:30%;
+				display:inline;
+			}
+	
+			body {
+  background-image: url("https://images.unsplash.com/photo-1562428971-0715247956f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1071&q=80");
+  background-size:cover;
+}
+		</style>
+</head>
+<body>
+
+<!-- Image and text -->
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMLqroiIgqdVIa8muBrslje6EkZcPFTh54RU3fbqZ1u7wLF9kA&usqp=CAU" width="100" height="100" class="d-inline-block align-top-center" style="margin-left:100%"alt="">
+    </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" id="main" class="nav-item active"href="/"><i class="fas fa-home"></i>Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+</nav>
+
+
+
+</nav>
+<</nav>
+<br>
+<hr>
+<br>
+
+
+    <div class="container">
+<% if(message && message.length>0) {%>
+  <div class="alert alert-success" role="alert">
+    <%= message %>
+    </div>
+    <% } %>
+</div>
+<br>
+
+<div class="jumbotron container"><h1  style="text-align:center;font-family:Josefin Sans;"> <strong>Welcome To Login Page </strong></h1></p>
+
+
+<div class="container" style="background:rgb(255, 69, 51) ; margin-top:5%">
+<div class="card" id="interncard" style=" background:pink;">
+  <div class="card-body">
+    <h2 style="font-family:Josefin Sans;"class="card-title text-center"><strong>Click Here To Login</strong></h2>
+    <hr>
+    <button style="font-family:Josefin Sans;" type="button" class="btn btn-secondary btn-lg btn-block"><a href="/login" class="card-link"><h3><i class="fas fa-users"></i> <strong>_Login</strong></h3>  </a></button>
+    <br>
+  </div>
+</div>
+
+</div>  
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>
