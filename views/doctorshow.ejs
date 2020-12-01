@@ -1,0 +1,411 @@
+<%- include ('partials/header'); %>
+<div class ="container">
+    
+    <nav class="navbar">
+  <a class="navbar-brand" href="#">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMLqroiIgqdVIa8muBrslje6EkZcPFTh54RU3fbqZ1u7wLF9kA&usqp=CAU" width="100" height="100" class="d-inline-block align-top-center" style="margin-left:100%"alt="">
+    </a>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+  <a class="navbar-brand" id="main" class="nav-item active"href="/doctorblogs"><i class="fas fa-chevron-circle-left"></i>  Go Back</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>
+</nav>
+
+    
+    
+    <div style="font-family:Segoe UI;" class="jumbotron form-group" > <h4 class="font-italic"> <i class="fas fa-user-injured"></i>  PATIENT DETAILS</h4> 
+    <div style="font-family:Segoe UI">
+    <label>1) Name of the Patient:</label><strong> <%= doctorblog.name %></strong><br>
+        <label>2) Age of the Patient:</label> <strong> <%= doctorblog.age %></strong><br>
+        <label>3) Gender of the Patient:</label><strong> <%= doctorblog.gender %></strong> <br>
+        <label>4) Created on:</label><strong> <%= doctorblog.created%></strong><br>
+        <label>5) Diagonesd by:</label><strong> <%= doctorblog.doctor%></strong><br>
+        
+    <h5 class="font-italic" style="font-family:Segoe UI;">MEES Score : <%= doctorblog.MEESScore %><br></h5>
+    <hr>
+    <p><strong>*</strong> Indicates Life-Threatening Score</p>
+
+        <hr>
+        </div>
+    <div class="container">
+<% if(message && message.length>0) {%>
+  <div class="alert alert-success" role="alert">
+    <%= message %>
+    </div>
+    <% } %>
+</div>
+</div>
+    <div style="background:rgb(230,230,250);"class="jumbotron form-group">
+        <h1 class="text-center">Airway Report</h1>
+        <br>
+        <div class="container"><h4>Airway-look</h4>
+        <hr>
+        <strong>Obstruct Foreign Bodies</strong><br>
+         
+         Swelling: <%= doctorblog.ofbSwelling %><br>
+         Deformity: <%= doctorblog.ofbDeformity %><br>
+         Injury: <%= doctorblog.ofbInjury %><br>
+         Others: <%= doctorblog.ofbOthers %><br>
+         <br>
+         <strong>Obstruct Foreign Bodies Descreption</strong><br>
+         Suction: <%= doctorblog.ofbSuction %><br>
+         ChinLift: <%= doctorblog.ofbChinlift %><br>
+         Jaw Thrust: <%= doctorblog.ofbJawthrust %><br>
+         <br>
+          <strong>Obstruct Soft Tissues</strong><br>
+         
+         Secretions: <%= doctorblog.ostSecretions %><br>
+         Vomiting: <%= doctorblog.ostVomiting %><br>
+         Blood Loss: <%= doctorblog.ostBloodloss %><br>
+         <br>
+         <strong>Obstruct Foreign Bodies Descreption</strong><br>
+         HeadTilt: <%= doctorblog.ostHeadtilt %><br>
+         ChinLift: <%= doctorblog.ostChinlift %><br>
+         Jaw Thrust: <%= doctorblog.ostJawthrust %><br>
+         <hr>
+         <hr>
+    </div>
+    
+    <div class="container"><h4>Airway-Listen</h4>
+        <hr>
+        Sounds: <%= doctorblog.airSounds %><br>
+         Snoring: <%= doctorblog.airSnoring %><br>
+         Grunting: <%= doctorblog.airGrunting %><br>
+         Strider: <%= doctorblog.airStrider %><br>
+         Gnurfling: <%= doctorblog.airGnurfling %><br>
+          H: <%= doctorblog.airH %><br>
+        Incomprehensive: <%= doctorblog.airIncomprehensive %><br>
+            Suction: <%= doctorblog.airSuction %><br>
+         <br>
+         <strong>Airway-Listen Descreption</strong><br>
+         Head Tilt: <%= doctorblog.airHeadtilt %><br>
+         Chin Lift: <%= doctorblog.airChinlift %><br>
+         Jaw Thrust: <%= doctorblog.airJawthrust%><br>
+         <hr>
+         
+    </div>
+    
+     <div class="container"><h4>Airway-Feel</h4>
+        <hr>
+        <strong>Manual Diagonosis Section</strong><br>
+        <strong>Obstruct Foreign Bodies</strong><br>
+        Swelling: <%= doctorblog.feelSwelling %><br>
+         Deformity: <%= doctorblog.feelDeformity %><br>
+         Injury: <%= doctorblog.feelInjury %><br>
+         Others: <%= doctorblog.feelOthers %><br>
+         <strong>Obstruct Foreign Bodies Description</strong><br>
+                  Suction: <%= doctorblog.feelSuction %><br>
+         Chin Lift: <%= doctorblog.feelChinLift %><br>
+        Further Intervention: <%= doctorblog.feelFurthermanual %> 
+         <br>
+         <br>
+            <strong>Not Manual Diagonosis Section</strong><br>
+            Intervention:<%= doctorblog.feelInvention %><br>
+            Further Intervention: <%= doctorblog.feelFurthernotmanual %>
+            
+   </div>         
+          
+       <hr>   
+     <div style="background:rgb(240,255,240);"class="jumbotron container">
+         <h1 class="text-center">Breathing Report</h1>
+         <br>
+         <div class="container">
+             <h3>Breathing Look</h3>
+             <hr>
+             Cynosis: <%= doctorblog.cynosis %><br>
+             Chest cage: <%= doctorblog.ccage %><br>
+             Respiratory: <%=doctorblog.resp %><br>
+             Symettrical Chest Movement: <%=doctorblog.scm %><br>
+        </div>
+        
+        <div>
+            <hr>
+            <h3>Breathing Listen</h3>
+            <hr>
+            <div>
+            <h5 class="font-italic">Normal</h5>
+            Normal_Tracheo-Bronchial: <%= doctorblog.bi11 %><br>
+            Normal_Bronchovesicular: <%= doctorblog.bi12 %><br>
+            
+        </div>
+        
+        <div>
+    
+            <br>
+            <h5 class="font-italic">Abnormal</h5>
+            Abnormal_Rhonchi: <%= doctorblog.bi21 %><br>
+            Abnormal_Wheeze: <%= doctorblog.bi22 %><br>
+            Abnormal_Stridor: <%= doctorblog.bi23 %><br>
+            Abnormal_Crackels: <%= doctorblog.bi24 %><br>
+            Abnormal_Friction rubs: <%= doctorblog.bi25 %><br>
+        <br>
+        </div>
+        
+        <div>
+            <h5 class="font-italic">Bronchial: <%=doctorblog.bi26 %></h5>
+        
+            Tabular: <%=doctorblog.bi261 %><br>
+            Cavernous: <%=doctorblog.bi262 %><br>
+            Amphoric: <%=doctorblog.bi263 %><br>
+            <br>
+        </div>
+        
+        <div>
+            <h5 class="font-italic">Right:</h5>
+            Upper:<%=doctorblog.bi271 %><br>
+            Middle:<%=doctorblog.bi272 %><br>
+            Lower lobes:<%=doctorblog.bi273 %><br>
+            Axilla:<%=doctorblog.bi274 %><br>
+            Interscapula:<%=doctorblog.bi275 %><br>
+            <br>
+        </div>
+        
+        <div>
+            <h5 class="font-italic">Left:</h5>
+            Upper:<%= doctorblog.bi281 %><br>
+            Middle: <%= doctorblog.bi282 %><br>
+            Lower lobes:<%= doctorblog.bi283 %><br>
+            Axilla: <%=doctorblog.bi284 %><br>
+            Interscapula: <%= doctorblog.bi285 %><br>
+            <br>
+        </div>
+        <hr>
+        <h3>Breathing Feel</h3>
+        <hr>
+        <div>
+        Anterior:<%= doctorblog.ant %><br>
+        Posterior:<%= doctorblog.post %><br>
+        Fremitus: <%= doctorblog.frem %><br>
+        Subcutaneous emphysema: <%= doctorblog.sem %><br>
+        Tenderness: <%= doctorblog.tend %><br>
+         
+    </div>
+    
+    </div>
+    
+    
+    
+    
+    
+    </div>
+    <div style="background:rgb(230,230,250);"class="jumbotron container">
+        <h1>Circulation Report</h1>
+        <br>
+        <h3><strong>Circulation Look</strong></h3>
+        <hr>
+        General Apeearance Patient : <%= doctorblog.gap %><br>
+        Assess The Capillary Refill Time: <%= doctorblog.atcrt %><br> 
+        JVP: <%= doctorblog.jvp %><br>
+        Oedema: <%= doctorblog.od %><br>
+        <hr>
+        <div class="container">
+            <strong>Heart Sound: <%= doctorblog.ci1 %></strong><br>
+            Normal:  <%= doctorblog.cinorm %><br>
+            Muffled:  <%= doctorblog.ci12 %><br>
+            Murmurs:   <%= doctorblog.ci13 %><br>
+            Gallops:  <%= doctorblog.ci14 %><br>
+            Irregular:  <%= doctorblog.ci15 %><br>
+        </div>
+        <hr>
+        <div class="container">
+            <strong>Systolic Murmurs:  <%= doctorblog.ci2 %></strong><br>
+            Aortic Stenosis :  <%= doctorblog.ci21 %><br>
+            Mitral Regugutation  <%= doctorblog.ci22 %><br>
+            
+        </div>
+        <hr>
+        <div class="container">
+            <strong>Diastolic Murmurs: <%= doctorblog.ci3 %></strong><br>
+            Aortic Regurgutation: <%= doctorblog.ci31 %><br>
+            Mitral Regurutation: <%= doctorblog.ci32 %><br>
+            Pulmonic Regurgutation:<%=doctorblog.ci33 %><br>
+            Mitral Stenosis: <%= doctorblog.ci34 %><br>
+            
+        </div>
+        <br> 
+        <h3>BP: <%= doctorblog.ci4 %> </h3><br>
+            <hr>
+        <div>
+        BP Area: <%= doctorblog.ci5 %><br>
+        Left Side: <%= doctorblog.ci51 %><br>
+        Right Side: <%= doctorblog.ci52 %><br>
+        </div>
+        <hr>
+        <div>
+            <strong><%= doctorblog.ci61 %><br>
+            </strong>
+        </div>
+        <hr>
+        <div>
+            Cardiogenic:<%= doctorblog.ci71 %><br>
+            Neurogenic:<%= doctorblog.ci72 %><br>
+            Septic:<%= doctorblog.ci73 %><br>
+            Anaphylactic:<%= doctorblog.ci74 %><br>
+        </div>
+        <hr>
+        <div>
+           <strong>Shock</strong>
+            Mental: <%= doctorblog.ci81 %><br>
+            Tachycardia: <%= doctorblog.ci82 %><br>
+        </div>
+        <hr>
+        <div>
+            <strong>Intervention</strong><br>
+            Cardiac Monitor: <%= doctorblog.ci91 %><br>
+            BP Monitor: <%= doctorblog.ci92 %><br>
+        </div>
+        
+        <div>
+            Size: <%= doctorblog.ci10 %><br>
+            Size: <%= doctorblog.ci11 %><br>
+        </div>
+        
+        <h3>Circular Feel</h3>
+        <hr>
+        <h4><strong> if Radial Felt : Do Nothing</strong></h4><br>
+        <hr>
+       <h4> <strong> if Radial not Felt:</strong></h4><br>
+        <strong>if Caritod not felt : then Start CPR</strong> <br>
+        <strong>else</strong><br>
+        <div>
+            Rate:<%= doctorblog.cf1 %><br>
+            Tachycardia: <%= doctorblog.cf11 %><br>
+            Bradycardia: <%= doctorblog.cf12 %><br>
+        </div>
+        
+        <div>
+            Quality:<%= doctorblog.cf2 %><br>
+            Normal:<%= doctorblog.cf21 %><br>
+            weak:<%= doctorblog.cf22 %><br>
+            Thready:<%= doctorblog.cf23%><br>
+            Bounding:<%= doctorblog.cf24 %><br>
+        </div>
+        
+        <div>
+            Regularity:<%= doctorblog.cf3 %><br>
+            Regular:<%= doctorblog.cf31 %><br>
+            Irregular:<%= doctorblog.cf32 %><br>
+            
+        </div>
+        
+        <div>
+            Pulses:<%= doctorblog.cf4 %><br>
+           <strong> if equal then do nothing<br>
+            else
+            do diaagnosis</strong>
+        </div>
+        
+    </div>
+    
+    <div style="background:rgb(240,255,240);"class="jumbotron container">
+    <h1>Disability Report</h1>
+    <br>
+        <h4>Level of Counsciousness</h4><br>
+        Conscious:<%=doctorblog.d1%>
+        <hr>
+        
+        <h4>Pupil</h4><br>
+        <strong>Normal:</strong><%=doctorblog.d2%><br>
+                    Constructed: <%=doctorblog.d21%><br>
+                    Dilated: <%=doctorblog.d22%><br>
+        
+        <strong>Non-Reactive:</strong> <%=doctorblog.d3%><br>
+            Left: <%=doctorblog.d31%><br>
+            right:<%=doctorblog.d32%><br>
+        
+        <strong>Shyguli:</strong><%=doctorblog.d4%><br>
+        Right: <%=doctorblog.d41%><br>
+        Left: <%=doctorblog.d42%><br>
+        <hr>
+            
+    
+    <h4>Tone</h4><br>
+    Normal: <%=doctorblog.d51%><br>
+    Hypotomia:<%=doctorblog.d52%><br>
+    Central Hypotomia:<%=doctorblog.d521%><br>
+    Peripheral Hypotomia:<%=doctorblog.d522%><br>
+    
+    <h4>Increased Tone</h4>:<%=doctorblog.d53%><br>
+    Spasticity:<%=doctorblog.d531%><br>
+    Pytonia:<%=doctorblog.d532%><br>
+    Rigidity:<%=doctorblog.d533%><br>
+    <hr>
+    
+    <h4>Motor</h4>
+    <strong>Normal:(if normal do nothing)</strong>
+    <strong>Abnormal:</strong>
+    
+    <strong>if Abnormal and left:</strong> <br>
+       Upper Limb: <%=doctorblog.d631%><br>
+       Lower Limb: <%=doctorblog.d632%><br>
+       <br>
+
+    
+    
+    </div>
+    
+    <div style="background:rgb(230,230,250);"class="jumbotron container">
+        <h1>Exposure Report</h1>
+        Hearing Problem : <%= doctorblog.e11 %><br>
+        Visual Impairments : <%= doctorblog.e21 %><br>
+        Deformities: <%= doctorblog.e31 %><br>
+        Contusion: <%= doctorblog.e32 %><br>
+        Abrasions: <%= doctorblog.e33 %><br>
+        Punctures: <%= doctorblog.e34 %><br>
+        Burns: <%= doctorblog.e35 %><br>
+        Tenderness: <%= doctorblog.e36 %><br>
+        Lacerations: <%= doctorblog.e37 %><br>
+        Swelling: <%= doctorblog.e38 %><br>
+        <hr>
+        
+        Chest: <%= doctorblog.e41 %><br>
+        Abdomen: <%= doctorblog.e42 %><br>
+        Pelvis: <%= doctorblog.e43 %><br>
+        Extremities: <%= doctorblog.e44 %><br>
+        Nose: <%= doctorblog.e45 %><br>
+        Skull: <%= doctorblog.e46 %><br>
+        Spine: <%= doctorblog.e47 %><br>
+        Back: <%= doctorblog.e48 %><br>
+        
+        Is the current treatment improving patient's conditon: <%= doctorblog.e5 %><br>
+        Has an already identified problem gotten better?:  <%= doctorblog.e6 %><br>
+        Has an already identified problem gotten worse?:  <%= doctorblog.e7 %><br>
+        
+        
+        
+    </div> 
+    
+<div style="background:rgb(240,255,240);"class="jumbotron container">
+    
+        
+<div id="myMir">
+    <h1>MEES Score : <%= doctorblog.MEESScore %><br></h1>
+    <hr>
+    <h4><p><strong>*</strong> Indicates Life-Threatening Score</p></h4>
+</div>
+</p>
+</div>
+
+        
+    <% if(CurrentUser.username==="admin@draruna") { %>
+    
+    
+    <a class="btn btn-success" href="<%=doctorblog._id%>/edit">Edit</a>
+    
+    
+    <form style="display:inline" action="/doctorblogs/<%=doctorblog._id%>?_method=DELETE" method="POST">
+        <button class="btn btn-danger" >Delete</button>
+        <input class="btn btn-warning" type="button" value="Print Report" onclick="window.print()">
+    </form>
+       <% } %>
+    
+        
+
+    
+
+
+
+
+<%include ('partials/footer'); %>
