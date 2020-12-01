@@ -1,0 +1,97 @@
+<html>
+	
+<head>
+	<title>main signup page</title>
+		<script src="https://kit.fontawesome.com/ac0527b785.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style type="text/css">
+			#main{
+				margin-top:20px;
+				margin-left:75%;
+				font-size:2em;
+				color:black;
+}
+			#interncard{
+				margin-top:50px;
+				margin-left:30%;
+				width: 18rem;
+				display:inline;
+
+			}
+
+			#doctorcard{
+								margin-top:50px;
+				margin-left:30%;
+				display:inline;
+				
+			}
+
+			#nursecard{
+								margin-top:50px;
+				margin-left:30%;
+				display:inline;
+			}
+			
+		</style>
+</head>
+<body>
+
+<!-- Image and text -->
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSMLqroiIgqdVIa8muBrslje6EkZcPFTh54RU3fbqZ1u7wLF9kA&usqp=CAU" width="100" height="100" class="d-inline-block align-top-center" style="margin-left:100%"alt="">
+    </a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" id="main" class="nav-item active"href="/"><i class="fas fa-home"></i>Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+
+  
+</nav>
+</nav>
+<h4><%=message %></h4>
+<p><h1  style="text-align:center;"> <strong>Welcome To Signup Page </strong></h1></p>
+
+
+<div class="container" style="background:pink; margin-top:5%">
+<div class="card" id="interncard" style=" background:pink;">
+  <div class="card-body">
+    <h3 class="card-title">All new Interns Signup here</h3>
+    
+    <button  type="button" class="btn btn-secondary btn-lg"><a href="/register" class="card-link">Intern Signup</a></button>
+    
+  </div>
+</div>
+
+<hr>
+<div class="card" id="doctorcard" style="width: 18rem;">
+  <div class="card-body">
+    <h3 class="card-title">All new Doctors Signup here</h3>
+    
+   <button type="button" class="btn btn-secondary btn-lg "> <a href="#" class="card-link">Doctor Signup</a> </button>
+      </div>
+</div>
+  
+<hr>
+ <div class="card" id="nursecard" style="width: 18rem;">
+  <div class="card-body">
+    <h3 class="card-title">All New Nurses Signup Here</h3>
+  <button type="button" class="btn btn-secondary btn-lg">	<a href="#" class="card-link">Nurse Signup</a></button>
+
+  </div>
+</div>
+<hr>
+</div>  
+
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</body>
+</html>
