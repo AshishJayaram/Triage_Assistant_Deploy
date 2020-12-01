@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ramaiah Hospital Emergency Department</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/landing.css">
+        <link href='https://fonts.googleapis.com/css?family=Julius Sans One' rel='stylesheet'>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript" async></script>
+    </head>
+    <body>
+
+    
+    </div>
+    
+    
+    <nav class="navbar">
+    <a class="navbar-brand" href="#">
+    <img src="https://kallows.com/wp-content/uploads/2019/02/ramaiah_hospital_logo.jpg" width="170" height="70" class="d-inline-block align-top" style="margin-left:10%;" alt="">
+    </a>
+
+  </nav>
+    
+    
+    <div style="font-family:Julius Sans One;"id="landing-header">
+ 		<h1><strong>Hey There, Have A Good Day!!!</strong></h1>
+ 	    <br>
+		<a href="/home" class="btn btn-lg btn-danger"><strong>Roll On & Diagnose</strong></a>
+    </div>
+    
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+    
+    
+    <script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+</head>
+
+<body onload="startTime()">
+<div style="padding-top:10%;"class="container text-center " >
+<div style="font-size:3em; color:white; font-family:Julius Sans One;" id="txt"></div>
+<p style="font-size:3em; color:white; font-family:Julius Sans One;" id="demo"></p>
+</div>
+<script>
+var d = new Date();
+document.getElementById("demo").innerHTML = d.toDateString();
+</script>
+
+
+
+
+
+</body>
+</head>
